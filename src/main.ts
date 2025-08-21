@@ -6,7 +6,6 @@ import App from "./App.vue";
 import VueVirtualScroller from 'vue-virtual-scroller';
 import VuePlyr from 'vue-plyr';
 import 'vue-plyr/dist/vue-plyr.css';
-import '@excalidraw/excalidraw/index.css'
 import en from './locales/en.json'
 import ru from './locales/ru.json'
 const messages = {
