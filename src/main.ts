@@ -4,8 +4,8 @@ import router from "./router/index.ts";
 import { createPinia } from "pinia";
 import App from "./App.vue";
 import VueVirtualScroller from 'vue-virtual-scroller';
-import VuePlyr from 'vue-plyr';
-import 'vue-plyr/dist/vue-plyr.css';
+import VuePlyr from '@skjnldsv/vue-plyr';
+import '@skjnldsv/vue-plyr/dist/vue-plyr.css';
 import en from './locales/en.json'
 import ru from './locales/ru.json'
 const messages = {
