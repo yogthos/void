@@ -28,11 +28,18 @@ const showCard = ref(true);
 const workdir = ref("");
 const settings_type = ref("");
 const settingsComponent = ref<Component | null>(null);
-const componentModules = import.meta.glob("./*.vue");
 const componentMap: Record<string, () => Promise<any>> = {};
-for (const path in componentModules) {
-  const name = path.split("/").pop()?.replace(".vue", "")!;
-  componentMap[name] = componentModules[path];
+
+// Only include components that are not statically imported in router
+// These are the only components that should be available for dynamic loading in settings
+const availableSettingsComponents: string[] = [
+  // Add any settings-specific components here that are NOT in the router
+  // For now, we'll leave this empty as most components are router-based
+];
+
+// Dynamically import only the specific components we want
+for (const componentName of availableSettingsComponents) {
+  componentMap[componentName] = () => import(`./${componentName}.vue`);
 }
 
 async function get_settings(name: string): Promise<Component> {
