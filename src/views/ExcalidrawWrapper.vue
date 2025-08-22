@@ -18,8 +18,8 @@ import { ref, onMounted, watch } from 'vue';
 import { applyReactInVue } from 'veaury';
 import { appDataDir, join } from '@tauri-apps/api/path';
 import { restore, serializeAsJSON } from '@excalidraw/excalidraw';
-import type { AppState, BinaryFiles } from '@excalidraw/excalidraw/types';
-import type { ExcalidrawElement } from '@excalidraw/excalidraw/element/types';
+import type { AppState, BinaryFiles } from '@excalidraw/excalidraw/types/types';
+import type { ExcalidrawElement } from '@excalidraw/excalidraw/types/element/types';
 import { read_canvas, write_canvas } from '@/lib/logic/utils';
 import { useExplorerStore } from '@/lib/logic/explorerstore';
 
@@ -190,5 +190,107 @@ const saveDrawing = async () => {
 
 :deep(.dropdown-menu-button) {
   display: none !important;
+}
+
+/* Essential Excalidraw styles */
+:deep(.excalidraw) {
+  width: 100% !important;
+  height: 100% !important;
+  position: relative;
+  background: transparent;
+  overflow: hidden;
+}
+
+:deep(.excalidraw__canvas) {
+  width: 100% !important;
+  height: 100% !important;
+  position: relative;
+  background: transparent;
+}
+
+:deep(.excalidraw__canvas-wrapper) {
+  width: 100% !important;
+  height: 100% !important;
+  position: relative;
+  background: transparent;
+}
+
+:deep(.layer-ui__wrapper) {
+  z-index: var(--zIndex-popup);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+:deep(.layer-ui__wrapper *) {
+  pointer-events: auto;
+}
+
+:deep(.App-menu_top) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--zIndex-popup);
+}
+
+:deep(.App-menu_bottom) {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--zIndex-popup);
+}
+
+:deep(.FixedSideContainer) {
+  position: absolute;
+  z-index: var(--zIndex-popup);
+}
+
+:deep(.Island) {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+:deep(.ToolIcon) {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+:deep(.ToolIcon:hover) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+:deep(.ToolIcon__icon) {
+  width: 24px;
+  height: 24px;
+}
+
+:deep(.excalidraw-textEditorContainer) {
+  position: absolute;
+  z-index: var(--zIndex-popup);
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+:deep(.excalidraw-textEditor) {
+  outline: none;
+  border: none;
+  padding: 8px;
+  font-family: inherit;
+  font-size: 16px;
+  resize: none;
 }
 </style>

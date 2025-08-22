@@ -11,7 +11,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@excalidraw/excalidraw": "^0.18.0",
+    "@excalidraw/excalidraw": "^0.17.6",
     "@tailwindcss/vite": "^4.1.3",
     "@tato30/vue-pdf": "^1.11.3",
     "@tauri-apps/api": "^2.8.0",
