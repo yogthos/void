@@ -17,7 +17,7 @@ Copyright 2025 The VOID Authors. All Rights Reserved.
 import { ref, onMounted, watch } from 'vue';
 import { applyReactInVue } from 'veaury';
 import { appDataDir, join } from '@tauri-apps/api/path';
-import { restore, serializeAsJSON } from '@excalidraw/excalidraw';
+import { restore, serializeAsJSON, Excalidraw } from '@excalidraw/excalidraw';
 import type { AppState, BinaryFiles } from '@excalidraw/excalidraw/types/types';
 import type { ExcalidrawElement } from '@excalidraw/excalidraw/types/element/types';
 import { read_canvas, write_canvas } from '@/lib/logic/utils';
@@ -52,8 +52,7 @@ const waiting = ref<boolean>(false);
 const initializeApp = async () => {
   try {
     filePath.value = await join(await appDataDir(), 'drawing.json');
-    const module = await import('@excalidraw/excalidraw');
-    ExcalidrawReact.value = applyReactInVue(module.Excalidraw);
+    ExcalidrawReact.value = applyReactInVue(Excalidraw);
   } catch (error) {
     initializationError.value = `Ошибка загрузки: ${error instanceof Error ? error.message : String(error)}`; // TODO: add i18n interpolation
   }

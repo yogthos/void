@@ -30,17 +30,9 @@ const settings_type = ref("");
 const settingsComponent = ref<Component | null>(null);
 const componentMap: Record<string, () => Promise<any>> = {};
 
-// Only include components that are not statically imported in router
-// These are the only components that should be available for dynamic loading in settings
-const availableSettingsComponents: string[] = [
-  // Add any settings-specific components here that are NOT in the router
-  // For now, we'll leave this empty as most components are router-based
-];
-
-// Dynamically import only the specific components we want
-for (const componentName of availableSettingsComponents) {
-  componentMap[componentName] = () => import(`./${componentName}.vue`);
-}
+// Note: componentMap is empty for now since most components are router-based
+// If you need to add dynamic imports in the future, create a separate components directory
+// to avoid the Vite warning about importing from the same directory
 
 async function get_settings(name: string): Promise<Component> {
   if (!name || name === "Global") return Global;
